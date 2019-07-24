@@ -13,6 +13,22 @@
 		2DCDC37822E85E0B006961F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DCDC37722E85E0B006961F0 /* Assets.xcassets */; };
 		2DCDC37B22E85E0B006961F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DCDC37922E85E0B006961F0 /* LaunchScreen.storyboard */; };
 		2DCDC37E22E85E0B006961F0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCDC37D22E85E0B006961F0 /* main.m */; };
+		2DCDC3A622E85E54006961F0 /* openssl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DCDC38622E85E54006961F0 /* openssl.framework */; };
+		2DCDC3A722E85E54006961F0 /* NSString+Convert.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCDC38722E85E54006961F0 /* NSString+Convert.m */; };
+		2DCDC3A822E85E54006961F0 /* NSData+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCDC38922E85E54006961F0 /* NSData+Hex.m */; };
+		2DCDC3A922E85E54006961F0 /* part1.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DCDC38D22E85E54006961F0 /* part1.c */; };
+		2DCDC3AA22E85E54006961F0 /* util.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DCDC38E22E85E54006961F0 /* util.c */; };
+		2DCDC3AB22E85E54006961F0 /* ec_param.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DCDC38F22E85E54006961F0 /* ec_param.c */; };
+		2DCDC3AC22E85E54006961F0 /* SM3.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DCDC39022E85E54006961F0 /* SM3.c */; };
+		2DCDC3AD22E85E54006961F0 /* sm2_ec_key.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DCDC39122E85E54006961F0 /* sm2_ec_key.c */; };
+		2DCDC3AE22E85E54006961F0 /* sm2_test_param.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DCDC39222E85E54006961F0 /* sm2_test_param.c */; };
+		2DCDC3AF22E85E54006961F0 /* part2.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DCDC39322E85E54006961F0 /* part2.c */; };
+		2DCDC3B022E85E54006961F0 /* xy_ecpoint.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DCDC39722E85E54006961F0 /* xy_ecpoint.c */; };
+		2DCDC3B122E85E54006961F0 /* part3.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DCDC39A22E85E54006961F0 /* part3.c */; };
+		2DCDC3B222E85E54006961F0 /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2DCDC39E22E85E54006961F0 /* ReadMe.txt */; };
+		2DCDC3B322E85E54006961F0 /* part4.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DCDC39F22E85E54006961F0 /* part4.c */; };
+		2DCDC3B422E85E54006961F0 /* SM2.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DCDC3A422E85E54006961F0 /* SM2.c */; };
+		2DCDC3B522E85E54006961F0 /* SM2Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCDC3A522E85E54006961F0 /* SM2Tool.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +42,38 @@
 		2DCDC37A22E85E0B006961F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DCDC37C22E85E0B006961F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DCDC37D22E85E0B006961F0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2DCDC38522E85E54006961F0 /* NSData+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Hex.h"; sourceTree = "<group>"; };
+		2DCDC38622E85E54006961F0 /* openssl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = openssl.framework; sourceTree = "<group>"; };
+		2DCDC38722E85E54006961F0 /* NSString+Convert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Convert.m"; sourceTree = "<group>"; };
+		2DCDC38822E85E54006961F0 /* SM2Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SM2Tool.h; sourceTree = "<group>"; };
+		2DCDC38922E85E54006961F0 /* NSData+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Hex.m"; sourceTree = "<group>"; };
+		2DCDC38A22E85E54006961F0 /* NSString+Convert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Convert.h"; sourceTree = "<group>"; };
+		2DCDC38C22E85E54006961F0 /* part3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = part3.h; sourceTree = "<group>"; };
+		2DCDC38D22E85E54006961F0 /* part1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = part1.c; sourceTree = "<group>"; };
+		2DCDC38E22E85E54006961F0 /* util.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = util.c; sourceTree = "<group>"; };
+		2DCDC38F22E85E54006961F0 /* ec_param.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ec_param.c; sourceTree = "<group>"; };
+		2DCDC39022E85E54006961F0 /* SM3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SM3.c; sourceTree = "<group>"; };
+		2DCDC39122E85E54006961F0 /* sm2_ec_key.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sm2_ec_key.c; sourceTree = "<group>"; };
+		2DCDC39222E85E54006961F0 /* sm2_test_param.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sm2_test_param.c; sourceTree = "<group>"; };
+		2DCDC39322E85E54006961F0 /* part2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = part2.c; sourceTree = "<group>"; };
+		2DCDC39422E85E54006961F0 /* part4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = part4.h; sourceTree = "<group>"; };
+		2DCDC39522E85E54006961F0 /* sm2_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sm2_common.h; sourceTree = "<group>"; };
+		2DCDC39622E85E54006961F0 /* SM2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SM2.h; sourceTree = "<group>"; };
+		2DCDC39722E85E54006961F0 /* xy_ecpoint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = xy_ecpoint.c; sourceTree = "<group>"; };
+		2DCDC39822E85E54006961F0 /* part1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = part1.h; sourceTree = "<group>"; };
+		2DCDC39922E85E54006961F0 /* targetver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = targetver.h; sourceTree = "<group>"; };
+		2DCDC39A22E85E54006961F0 /* part3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = part3.c; sourceTree = "<group>"; };
+		2DCDC39B22E85E54006961F0 /* SM3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SM3.h; sourceTree = "<group>"; };
+		2DCDC39C22E85E54006961F0 /* ec_param.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ec_param.h; sourceTree = "<group>"; };
+		2DCDC39D22E85E54006961F0 /* util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = util.h; sourceTree = "<group>"; };
+		2DCDC39E22E85E54006961F0 /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
+		2DCDC39F22E85E54006961F0 /* part4.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = part4.c; sourceTree = "<group>"; };
+		2DCDC3A022E85E54006961F0 /* sm2_test_param.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sm2_test_param.h; sourceTree = "<group>"; };
+		2DCDC3A122E85E54006961F0 /* part2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = part2.h; sourceTree = "<group>"; };
+		2DCDC3A222E85E54006961F0 /* sm2_ec_key.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sm2_ec_key.h; sourceTree = "<group>"; };
+		2DCDC3A322E85E54006961F0 /* xy_ecpoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xy_ecpoint.h; sourceTree = "<group>"; };
+		2DCDC3A422E85E54006961F0 /* SM2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SM2.c; sourceTree = "<group>"; };
+		2DCDC3A522E85E54006961F0 /* SM2Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SM2Tool.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DCDC3A622E85E54006961F0 /* openssl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +91,7 @@
 		2DCDC36222E85E09006961F0 = {
 			isa = PBXGroup;
 			children = (
+				2DCDC38422E85E54006961F0 /* SM2 */,
 				2DCDC36D22E85E09006961F0 /* SM2Tool */,
 				2DCDC36C22E85E09006961F0 /* Products */,
 			);
@@ -69,6 +119,53 @@
 				2DCDC37D22E85E0B006961F0 /* main.m */,
 			);
 			path = SM2Tool;
+			sourceTree = "<group>";
+		};
+		2DCDC38422E85E54006961F0 /* SM2 */ = {
+			isa = PBXGroup;
+			children = (
+				2DCDC38622E85E54006961F0 /* openssl.framework */,
+				2DCDC38722E85E54006961F0 /* NSString+Convert.m */,
+				2DCDC38522E85E54006961F0 /* NSData+Hex.h */,
+				2DCDC38922E85E54006961F0 /* NSData+Hex.m */,
+				2DCDC38A22E85E54006961F0 /* NSString+Convert.h */,
+				2DCDC38B22E85E54006961F0 /* sm2 */,
+				2DCDC38822E85E54006961F0 /* SM2Tool.h */,
+				2DCDC3A522E85E54006961F0 /* SM2Tool.m */,
+			);
+			path = SM2;
+			sourceTree = "<group>";
+		};
+		2DCDC38B22E85E54006961F0 /* sm2 */ = {
+			isa = PBXGroup;
+			children = (
+				2DCDC38C22E85E54006961F0 /* part3.h */,
+				2DCDC38D22E85E54006961F0 /* part1.c */,
+				2DCDC38E22E85E54006961F0 /* util.c */,
+				2DCDC38F22E85E54006961F0 /* ec_param.c */,
+				2DCDC39022E85E54006961F0 /* SM3.c */,
+				2DCDC39122E85E54006961F0 /* sm2_ec_key.c */,
+				2DCDC39222E85E54006961F0 /* sm2_test_param.c */,
+				2DCDC39322E85E54006961F0 /* part2.c */,
+				2DCDC39422E85E54006961F0 /* part4.h */,
+				2DCDC39522E85E54006961F0 /* sm2_common.h */,
+				2DCDC39622E85E54006961F0 /* SM2.h */,
+				2DCDC39722E85E54006961F0 /* xy_ecpoint.c */,
+				2DCDC39822E85E54006961F0 /* part1.h */,
+				2DCDC39922E85E54006961F0 /* targetver.h */,
+				2DCDC39A22E85E54006961F0 /* part3.c */,
+				2DCDC39B22E85E54006961F0 /* SM3.h */,
+				2DCDC39C22E85E54006961F0 /* ec_param.h */,
+				2DCDC39D22E85E54006961F0 /* util.h */,
+				2DCDC39E22E85E54006961F0 /* ReadMe.txt */,
+				2DCDC39F22E85E54006961F0 /* part4.c */,
+				2DCDC3A022E85E54006961F0 /* sm2_test_param.h */,
+				2DCDC3A122E85E54006961F0 /* part2.h */,
+				2DCDC3A222E85E54006961F0 /* sm2_ec_key.h */,
+				2DCDC3A322E85E54006961F0 /* xy_ecpoint.h */,
+				2DCDC3A422E85E54006961F0 /* SM2.c */,
+			);
+			path = sm2;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,6 +227,7 @@
 			files = (
 				2DCDC37B22E85E0B006961F0 /* LaunchScreen.storyboard in Resources */,
 				2DCDC37822E85E0B006961F0 /* Assets.xcassets in Resources */,
+				2DCDC3B222E85E54006961F0 /* ReadMe.txt in Resources */,
 				2DCDC37622E85E09006961F0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -141,8 +239,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DCDC3A922E85E54006961F0 /* part1.c in Sources */,
 				2DCDC37322E85E09006961F0 /* ViewController.m in Sources */,
+				2DCDC3AA22E85E54006961F0 /* util.c in Sources */,
+				2DCDC3B522E85E54006961F0 /* SM2Tool.m in Sources */,
+				2DCDC3AC22E85E54006961F0 /* SM3.c in Sources */,
+				2DCDC3AB22E85E54006961F0 /* ec_param.c in Sources */,
+				2DCDC3AE22E85E54006961F0 /* sm2_test_param.c in Sources */,
+				2DCDC3B022E85E54006961F0 /* xy_ecpoint.c in Sources */,
+				2DCDC3A722E85E54006961F0 /* NSString+Convert.m in Sources */,
+				2DCDC3B422E85E54006961F0 /* SM2.c in Sources */,
+				2DCDC3B122E85E54006961F0 /* part3.c in Sources */,
 				2DCDC37E22E85E0B006961F0 /* main.m in Sources */,
+				2DCDC3A822E85E54006961F0 /* NSData+Hex.m in Sources */,
+				2DCDC3AF22E85E54006961F0 /* part2.c in Sources */,
+				2DCDC3B322E85E54006961F0 /* part4.c in Sources */,
+				2DCDC3AD22E85E54006961F0 /* sm2_ec_key.c in Sources */,
 				2DCDC37022E85E09006961F0 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -287,6 +399,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VSU3CW8QUS;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SM2",
+				);
 				INFOPLIST_FILE = SM2Tool/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -304,6 +420,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VSU3CW8QUS;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SM2",
+				);
 				INFOPLIST_FILE = SM2Tool/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
