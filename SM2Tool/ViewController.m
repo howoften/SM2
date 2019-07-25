@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
     NSString *private_key = @"DECF275678689761800D1ED9CFE273399AEEC68615E714048497BBD54A1806EF";
     NSString *public_key_x = @"0DD07FEDF022941161F7CD3F44C19D85E72D7FC0BA7CAE2D9834DD5D91A82813";
