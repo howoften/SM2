@@ -87,6 +87,9 @@
     NSAssert(([plainText convertHex2Dec] != nil && [keyX convertHex2Dec] != nil && [keyX convertHex2Dec] != nil && keyX.length == 64 && keyY.length == 64), @"[SM2Tool sm2EncryptWithPlainText:publicKeyX:publicKeyY:], argu is invalid!");
     
     char encrypt_c[1024] = {'\0'};
+    if (plainText.length%2 != 0) {
+        plainText = [@"0" stringByAppendingString:plainText];
+    }
     NSData *plainText_data = [NSData dataFromHexString:plainText];
     NSData *px_data = [NSData dataFromHexString:keyX];
     NSData *py_data = [NSData dataFromHexString:keyY];
