@@ -14,10 +14,9 @@
 
 @implementation SM2Tool
 
-+ (NSString *)sm2signWithPlainText:(NSString *)plainText privateKey:(NSString *)privateKey userId:(NSString *)userId {
-  
-    NSAssert(([plainText isKindOfClass:[NSString class]] && [privateKey isKindOfClass:[NSString class]] && [userId isKindOfClass:[NSString class]]), @"[SM2Tool sm2signWithPlainText:privateKey:userId:], argu not support!");
-    NSAssert(([plainText convertHex2Dec] != nil && [privateKey convertHex2Dec] != nil && [userId convertHex2Dec] != nil && privateKey.length == 64), @"[SM2Tool sm2signWithPlainText:privateKey:userId:], argu is invalid!");
++ (NSString *)sm2signWithHexText:(NSString *)hexText privateKey:(NSString *)privateKey userId:(NSString *)userId {
+    NSAssert(([hexText isKindOfClass:[NSString class]] && [privateKey isKindOfClass:[NSString class]] && [userId isKindOfClass:[NSString class]]), @"[SM2Tool sm2signWithPlainText:privateKey:userId:], argu not support!");
+    NSAssert(([hexText convertHex2Dec] != nil && [privateKey convertHex2Dec] != nil && [userId convertHex2Dec] != nil && privateKey.length == 64), @"[SM2Tool sm2signWithPlainText:privateKey:userId:], argu is invalid!");
 
     
     if ([privateKey hasPrefix:@"0"]) { //rmove invalid byte
@@ -40,7 +39,7 @@
     NSString *pub_x_str = [[NSString alloc]initWithData:[[NSData alloc]initWithBytes:pub_key_x length:64] encoding:NSUTF8StringEncoding];
     NSString *pub_y_str = [[NSString alloc]initWithData:[[NSData alloc]initWithBytes:pub_key_y length:64] encoding:NSUTF8StringEncoding];
     NSData *user_id = [NSData dataFromHexString:userId];
-    NSData *plainData = [NSData dataFromHexString:plainText];
+    NSData *plainData = [NSData dataFromHexString:hexText];
 
     char signR[1024];
     char signS[1024];
@@ -52,17 +51,25 @@
     return [signRString stringByAppendingString:signSString];
 }
 
-+ (BOOL)sm2verifyWithPlainText:(NSString *)plainText signText:(NSString *)signText publicKey:(NSString *)publicKey userId:(NSString *)userId {
-    NSAssert(([plainText isKindOfClass:[NSString class]] && [signText isKindOfClass:[NSString class]] && [publicKey isKindOfClass:[NSString class]] && [userId isKindOfClass:[NSString class]]), @"[SM2Tool sm2verifyWithPlainText: signText:publicKey:userId:], argu not support!");
-    NSAssert(([signText length] == 64*2 && [publicKey length] == 64*2), @"[SM2Tool sm2verifyWithPlainText: signText:publicKey:userId:], argu is invalid!");
-    return [self sm2verifyWithPlainText:plainText signRText:[signText substringToIndex:64] signSText:[signText substringFromIndex:64] publicKeyX:[publicKey substringToIndex:64] publicKeyY:[publicKey substringFromIndex:64] userId:userId];
++ (NSString *)sm2signWithPlainText:(NSString *)plainText privateKey:(NSString *)privateKey userId:(NSString *)userId {
+    return [self sm2signWithHexText:[NSData hexStringFromData:[plainText dataUsingEncoding:NSUTF8StringEncoding]] privateKey:privateKey userId:userId];
 }
 
-+ (BOOL)sm2verifyWithPlainText:(NSString *)plainText signRText:(NSString *)signR signSText:(NSString *)signS publicKeyX:(NSString *)keyX publicKeyY:(NSString *)keyY userId:(NSString *)userId {
-    NSAssert(([plainText isKindOfClass:[NSString class]] && [signR isKindOfClass:[NSString class]] && [signS isKindOfClass:[NSString class]] && [keyX isKindOfClass:[NSString class]] && [keyY isKindOfClass:[NSString class]] && [userId isKindOfClass:[NSString class]]), @"[SM2Tool sm2verifyWithPlainText:signRText:signSText:publicKeyX:publicKeyY:userId:], argu not support!");
++ (BOOL)sm2verifyWithHexText:(NSString *)hexText signText:(NSString *)signText publicKey:(NSString *)publicKey userId:(NSString *)userId {
+    NSAssert(([hexText isKindOfClass:[NSString class]] && [signText isKindOfClass:[NSString class]] && [publicKey isKindOfClass:[NSString class]] && [userId isKindOfClass:[NSString class]]), @"[SM2Tool sm2verifyWithPlainText: signText:publicKey:userId:], argu not support!");
+    NSAssert(([signText length] == 64*2 && [publicKey length] == 64*2), @"[SM2Tool sm2verifyWithPlainText: signText:publicKey:userId:], argu is invalid!");
+    return [self sm2verifyWithHexText:hexText signRText:[signText substringToIndex:64] signSText:[signText substringFromIndex:64] publicKeyX:[publicKey substringToIndex:64] publicKeyY:[publicKey substringFromIndex:64] userId:userId];
+}
+
++ (BOOL)sm2verifyWithPlainText:(NSString *)plainText signText:(NSString *)signText publicKey:(NSString *)publicKey userId:(NSString *)userId {
+    return [self sm2verifyWithHexText:[NSData hexStringFromData:[plainText dataUsingEncoding:NSUTF8StringEncoding]] signText:signText publicKey:publicKey userId:userId];
+}
+
++ (BOOL)sm2verifyWithHexText:(NSString *)hexText signRText:(NSString *)signR signSText:(NSString *)signS publicKeyX:(NSString *)keyX publicKeyY:(NSString *)keyY userId:(NSString *)userId {
+    NSAssert(([hexText isKindOfClass:[NSString class]] && [signR isKindOfClass:[NSString class]] && [signS isKindOfClass:[NSString class]] && [keyX isKindOfClass:[NSString class]] && [keyY isKindOfClass:[NSString class]] && [userId isKindOfClass:[NSString class]]), @"[SM2Tool sm2verifyWithPlainText:signRText:signSText:publicKeyX:publicKeyY:userId:], argu not support!");
     
-    NSAssert(([plainText convertHex2Dec] != nil && [signS convertHex2Dec] != nil && [signR convertHex2Dec] != nil && [keyX convertHex2Dec] != nil && [keyY convertHex2Dec] != nil && [userId convertHex2Dec] != nil && signR.length ==64 && signS.length == 64 && keyX.length == 64 && keyY.length == 64), @"[SM2Tool sm2verifyWithPlainText:signRText:signSText:publicKeyX:publicKeyY:userId:], argu is invalid!");
-    NSData *plain_data = [NSData dataFromHexString:plainText];
+    NSAssert(([hexText convertHex2Dec] != nil && [signS convertHex2Dec] != nil && [signR convertHex2Dec] != nil && [keyX convertHex2Dec] != nil && [keyY convertHex2Dec] != nil && [userId convertHex2Dec] != nil && signR.length ==64 && signS.length == 64 && keyX.length == 64 && keyY.length == 64), @"[SM2Tool sm2verifyWithPlainText:signRText:signSText:publicKeyX:publicKeyY:userId:], argu is invalid!");
+    NSData *plain_data = [NSData dataFromHexString:hexText];
     NSData *signR_data = [NSData dataFromHexString:signR];
     NSData *signS_data = [NSData dataFromHexString:signS];
     NSData *px_data = [NSData dataFromHexString:keyX];
@@ -74,28 +81,35 @@
     return result;
 }
 
-+ (NSString *)sm2EncryptWithPlainText:(NSString *)plainText publicKey:(NSString *)publicKey {
-    
-    NSAssert(([plainText isKindOfClass:[NSString class]] && [publicKey isKindOfClass:[NSString class]]), @"[SM2Tool sm2EncryptWithPlainText:publicKey:], argu not support!");
-    NSAssert([publicKey length] == 64*2, @"[SM2Sign sm2EncryptWithPlainText:publicKey:], argu is invalid!");
-    return [self sm2EncryptWithPlainText:plainText publicKeyX:[publicKey substringToIndex:64] publicKeyY:[publicKey substringFromIndex:64]];
++ (BOOL)sm2verifyWithPlainText:(NSString *)plainText signRText:(NSString *)signR signSText:(NSString *)signS publicKeyX:(NSString *)keyX publicKeyY:(NSString *)keyY userId:(NSString *)userId {
+    return [self sm2verifyWithHexText:[NSData hexStringFromData:[plainText dataUsingEncoding:NSUTF8StringEncoding]] signRText:signR signSText:signS publicKeyX:keyX publicKeyY:keyY userId:userId];
 }
 
-+ (NSString *)sm2EncryptWithPlainText:(NSString *)plainText publicKeyX:(NSString *)keyX publicKeyY:(NSString *)keyY {
-    NSAssert(([plainText isKindOfClass:[NSString class]] && [keyX isKindOfClass:[NSString class]] && [keyY isKindOfClass:[NSString class]]), @"[SM2Tool sm2EncryptWithPlainText:publicKeyX:publicKeyY:], argu not support!");
++ (NSString *)sm2EncryptWithHexText:(NSString *)hexText publicKey:(NSString *)publicKey {
+    NSAssert(([hexText isKindOfClass:[NSString class]] && [publicKey isKindOfClass:[NSString class]]), @"[SM2Tool sm2EncryptWithPlainText:publicKey:], argu not support!");
+    NSAssert([publicKey length] == 64*2, @"[SM2Sign sm2EncryptWithPlainText:publicKey:], argu is invalid!");
+    return [self sm2EncryptWithHexText:hexText publicKeyX:[publicKey substringToIndex:64] publicKeyY:[publicKey substringFromIndex:64]];
+}
+
++ (NSString *)sm2EncryptWithPlainText:(NSString *)plainText publicKey:(NSString *)publicKey {
+    return [self sm2EncryptWithHexText:[NSData hexStringFromData:[plainText dataUsingEncoding:NSUTF8StringEncoding]] publicKey:publicKey];
+}
+
++ (NSString *)sm2EncryptWithHexText:(NSString *)hexText publicKeyX:(NSString *)keyX publicKeyY:(NSString *)keyY {
+    NSAssert(([hexText isKindOfClass:[NSString class]] && [keyX isKindOfClass:[NSString class]] && [keyY isKindOfClass:[NSString class]]), @"[SM2Tool sm2EncryptWithPlainText:publicKeyX:publicKeyY:], argu not support!");
     
-    NSAssert(([plainText convertHex2Dec] != nil && [keyX convertHex2Dec] != nil && [keyX convertHex2Dec] != nil && keyX.length == 64 && keyY.length == 64), @"[SM2Tool sm2EncryptWithPlainText:publicKeyX:publicKeyY:], argu is invalid!");
+    NSAssert(([hexText convertHex2Dec] != nil && [keyX convertHex2Dec] != nil && [keyX convertHex2Dec] != nil && keyX.length == 64 && keyY.length == 64), @"[SM2Tool sm2EncryptWithPlainText:publicKeyX:publicKeyY:], argu is invalid!");
     
     char encrypt_c[1024] = {'\0'};
-    if (plainText.length%2 != 0) {
-        plainText = [@"0" stringByAppendingString:plainText];
+    if (hexText.length%2 != 0) {
+        hexText = [@"0" stringByAppendingString:hexText];
     }
-    NSData *plainText_data = [NSData dataFromHexString:plainText];
+    NSData *plainText_data = [NSData dataFromHexString:hexText];
     NSData *px_data = [NSData dataFromHexString:keyX];
     NSData *py_data = [NSData dataFromHexString:keyY];
     
      sm2JiaMiWithPublicKey(sm2_param_recommand, TYPE_GFp, 256, (char *)plainText_data.bytes, plainText_data.length, encrypt_c, (unsigned char *)px_data.bytes, (unsigned char *)py_data.bytes);
-    NSData *encrypt_data = [[NSData alloc]initWithBytes:encrypt_c length:96+plainText.length/2+plainText.length%2+1];
+    NSData *encrypt_data = [[NSData alloc]initWithBytes:encrypt_c length:96+hexText.length/2+hexText.length%2+1];
     
    
     NSString *encrypt_str = [NSData hexStringFromData:encrypt_data];
@@ -104,7 +118,12 @@
     return [encrypt_str substringFromIndex:2];
 }
 
-+ (NSString *)sm2DecryptWithSecureText:(NSString *)secureText privateKey:(NSString *)privateKey {
+
++ (NSString *)sm2EncryptWithPlainText:(NSString *)plainText publicKeyX:(NSString *)keyX publicKeyY:(NSString *)keyY {
+    return [self sm2EncryptWithHexText:[NSData hexStringFromData:[plainText dataUsingEncoding:NSUTF8StringEncoding]] publicKeyX:keyX publicKeyY:keyY];
+}
+
++ (NSString *)sm2DecryptHexTextWithSecureText:(NSString *)secureText privateKey:(NSString *)privateKey {
     NSAssert(([secureText isKindOfClass:[NSString class]] && [privateKey isKindOfClass:[NSString class]]), @"[SM2Tool sm2DecryptWithPlainText:publicKeyX:privateKey:], argu not support!");
     NSAssert(([secureText convertHex2Dec] != nil && [privateKey convertHex2Dec] != nil && privateKey.length == 64), @"[SM2Tool sm2EncryptWithPlainText:publicKeyX:publicKeyY:], argu is invalid!");
     
@@ -117,6 +136,11 @@
     NSString *decrypt_str = [NSData hexStringFromData:[[NSData alloc]initWithBytes:decrypt_c length:secureText.length/2+secureText.length%2-96]];
     
     return decrypt_str;
+}
+
++ (NSString *)sm2DecryptPlainTextWithSecureText:(NSString *)secureText privateKey:(NSString *)privateKey {
+    NSString *hex = [self sm2DecryptHexTextWithSecureText:secureText privateKey:privateKey];
+    return [[NSString alloc] initWithData:[NSData dataFromHexString:hex] encoding:NSUTF8StringEncoding];
 }
 
 @end
