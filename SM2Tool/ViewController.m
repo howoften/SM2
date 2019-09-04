@@ -39,9 +39,7 @@
     
     NSString *encrypt_hexStr = [SM2Tool sm2EncryptWithHexText:hex_text publicKey:[public_key_x stringByAppendingString:public_key_y]];
     NSString *decrypt_hexStr = [SM2Tool sm2DecryptHexTextWithSecureText:encrypt_hexStr privateKey:private_key];
-    
-    NSString *hel = @"";
-    
+        
     
     
 }

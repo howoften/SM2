@@ -10,12 +10,15 @@
 
 @interface SM2Tool : NSObject
 /**
-以下方法中所有参数都为 字节数组中16进制数值 直接对应的字符串
- 
- eg. Byte sample_c[] = {0x30, 0x5B, 0xF0, 0x71};
+以下方法中带 'hex'关键字表示 16进制字符作为参数, 例如:
+  eg. Byte sample_c[] = {0x30, 0x5B, 0xF0, 0x71};
      对应参数应为 NSString *sample_str = @"305BF071";
  
- ps.SM2中公钥为 publicKeyX + publicKeyY, 签名结果为 SignR + SignS, 所以以下同功能会提供两种实现, 你可以拼接后当一个参数传入, 也可以分开传入. 对应以下(第二和第三方法),(第四和第五方法).
+ 带 'plain'关键字表示 原始字符串作为参数, 例如:
+  eg.NSString *original_str = @"北京欢迎你";
+          可将original_str直接作为参数传入;
+ 
+ ps.SM2中公钥为 publicKeyX + publicKeyY, 签名结果为 SignR + SignS, 所以以下同功能会提供两种实现, 你可以拼接后当一个参数传入, 也可以分开传入.
  */
 
 + (NSString *)sm2signWithHexText:(NSString *)hexText privateKey:(NSString *)privateKey userId:(NSString *)userId;
